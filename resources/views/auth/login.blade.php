@@ -35,7 +35,7 @@
     </div>
 
     <div class="form-group no-margin">
-        <button type="submit" class="btn btn-outline-primary btn-block">
+        <button type="submit" class="btn btn-outline-primary btn-block"><i class="fa fa-sign-in"></i>
             Login
         </button>
     </div>

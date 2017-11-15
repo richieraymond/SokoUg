@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Category;
+use Carbon\Carbon;
 class ProductController extends Controller
 {
     /**
@@ -62,6 +63,8 @@ class ProductController extends Controller
         $products->description=$request->description;
         $products->qauntity=$request->quantity;
         $products->status=false;
+        $products->image=$fileName;
+        $products->slug=Auth::user()->id.$request->quantity.Carbon::now()->timestamp;
         $products->save();
         return redirect('products/');
 
@@ -87,6 +90,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $product = Product::find($id);
+        return view('products.edit',compact('product'));
     }
 
     /**

@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="col-md-12 col-md-offset-0">
-      <div class="card card-success">
-        <div class="card-title card-success">
+      <div class="card card-outline-primary">
+        <div class="card-header">
           Create New Advert
         </div>
         <div class="card-body">
@@ -18,8 +18,8 @@
           {{ Form::open(['action' => 'Adverts@store','enctype'=>'multipart/form-data']) }}
           <div class="form-group">
             <div class="form-line">
-              {{ Form::label('name', 'Advert Title') }}
-              {{ Form::text('name', '', ['class' => 'form-control']) }}
+              {{ Form::label('name','Advert Title') }}
+              {{ Form::text('name','', ['class' => 'form-control']) }}
             </div>
           </div>
           <div class="form-group">
@@ -43,7 +43,7 @@
           <div class="form-group">
             <div class="form-line">
               {{ Form::label('icon', 'Promotion Image') }}
-              {{ Form::file('icon', '', ['class' => 'form-control']) }}
+              {{ Form::file('icon', ['class' => 'form-control']) }}
             </div>
           </div>
           <div class="form-group">
@@ -57,4 +57,3 @@
     </div>
 	</div>
 @endsection
-

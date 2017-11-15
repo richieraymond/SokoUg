@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
 <!-- PAGE CONTENT BEGINS -->
+<div class="col-lg-9">
             <div class="clearfix">
             <div class="hr dotted"></div>
-
             <div>
             <div class="">
             <div id="user-profile-3" class="user-profile row">
@@ -14,27 +14,26 @@
             <div class="tabbable">
             <ul class="nav nav-tabs padding-16">
                 <li class="active">
-                    <a data-toggle="tab" href="#edit-basic">
-                        <i class="green ace-icon fa fa-pencil-square-o bigger-125"></i>
+                    <a data-toggle="tab" class="btn btn-outline-primary btn-rounded btn-sm" href="#edit-basic">
                         Edit Info
                     </a>
                 </li>
 
                 <li>
-                    <a data-toggle="tab" href="#edit-settings">
+                    <a data-toggle="tab" class="btn btn-outline-primary btn-rounded btn-sm" href="#edit-settings">
                         <i class="purple ace-icon fa fa-cog bigger-125"></i>
                         Settings
                     </a>
                 </li>
 
                 <li>
-                    <a data-toggle="tab" href="#edit-password">
+                    <a data-toggle="tab" class="btn btn-outline-primary btn-rounded btn-sm" href="#edit-password">
                         <i class="blue ace-icon fa fa-key bigger-125"></i>
                         Password
                     </a>
                 </li>
             </ul>
-            @foreach($admindata as $admin)
+            @foreach($userdata as $admin)
             <div class="tab-content profile-edit-tab-content">
                 <div id="edit-basic" class="tab-pane in active">
                     <h4 class="header blue bolder smaller">General</h4>
@@ -43,7 +42,7 @@
                     <form><!--Profile-photo-->
                         <div class="col-xs-12 col-sm-3 center">
                             <span class="profile-picture">
-                                <img class="editable img-responsive" height="100" width="100" alt="Profile photo" id="avatar2" src="{{ asset('images/'.$admin->photo) }}" />
+                                <img class="editable img-responsive" height="100" width="100" alt="Profile photo" id="avatar2" src="{{ asset('images/profilephotos/'.$admin->photo) }}" />
                             </span>
                             <div class="space space-4"></div>
 						</div><!-- /.col -->
@@ -107,9 +106,9 @@
                             Reset
                         </button>
                     </div>
-            </div>	
+            </div>
                 </div>
-                
+
                 </form><!--Settings-->
                 <div id="edit-settings" class="tab-pane">
                     <div class="space-10"></div>
@@ -163,5 +162,8 @@
             </div>
 
             <!-- PAGE CONTENT ENDS -->
+          </div>
+        </div>
+</div>
 
 @endsection

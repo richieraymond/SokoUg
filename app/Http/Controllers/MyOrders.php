@@ -15,7 +15,7 @@ class MyOrders extends Controller
     public function index()
     {
         //
-        $orders=Order::where('user_id','=',Auth::user()->id)->paginate(20);
+        $orders=Order::with('payment')->where('user_id','=',Auth::user()->id)->paginate(20);
         return view('orders.index',compact('orders'));
     }
 

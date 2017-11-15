@@ -4,10 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>{{ config('app.name', 'PMonitor') }} Login</title>
+	<title>{{ config('app.name') }} Login</title>
      <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/my-login.css') }}">
+	<link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
 </head>
 <body class="my-login-page">
 	<section class="h-100">
@@ -23,7 +25,7 @@
 						</div>
 					</div>
 					<div class="footer">
-                    Copyright {{ config('app.name', 'PMonitor') }} &copy;  2017
+                    Copyright {{ config('app.name') }} &copy;  @php echo date('Y') @endphp
 					</div>
 				</div>
 			</div>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-Use App\Admin;
+Use App\User;
 class UserProfile extends Controller
 {
     /**
@@ -18,8 +18,8 @@ class UserProfile extends Controller
     public function index()
     {
         //
-        $admindata = Admin::where('id','=',Auth::user()->id)->get();
-        return view('users.profile',compact('admindata'));
+        $userdata = User::where('id','=',Auth::user()->id)->get();
+        return view('users.profile',compact('userdata'));
 
     }
 

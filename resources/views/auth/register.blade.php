@@ -3,7 +3,7 @@
 <div class="col-lg-12"><!--Main div-->
 <div class="card card-outline-secondary">
   <div class="card-block">
-    <h4 class="card-title">Create Account</h4>
+    <h4 class="card-header">Create Account</h4>
     @if ($errors->any())
               <div class="alert alert-danger">
                   <ul>
@@ -57,7 +57,7 @@
               {{ Form::text('password_confirmation', '', ['class' => 'form-control']) }}
             </div>
           </div>
-          
+
           <div class="col-md-12 form-group">
             {{ Form::submit('Submit', ['class' => 'btn btn-block btn-secondary btn-outline-primary']) }}
           </div>

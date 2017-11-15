@@ -1,22 +1,5 @@
 @extends('layouts.shop')
 @section('content')
-<div class="col-lg-3">
-          <h1 class="my-4">Shop Name</h1>
-          <div class="list-group">
-            <a href="#" class="list-group-item">Categories</a>
-            <a href="{{ url('products/create') }}" class="list-group-item">Electronics</a>
-            <a href="#" class="list-group-item">Home and living</a>
-			<a href="#" class="list-group-item">Building</a>
-            <a href="#" class="list-group-item">Manufacturing</a>
-            <a href="#" class="list-group-item">Pharmaceuticals</a>
-			
-          </div>
-
-        </div>
-        <!-- /.col-lg-3 -->
-
-        <div class="col-lg-9">
-
           <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -53,103 +36,34 @@
           </div>
 
           <div class="row">
+            @foreach($products as $product)
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="{{ url('product/productdetails/'.$product->slug ) }}"><img class="card-img-top" src="{{ asset('images/productimages/'.$product->image) }}" height="150" width="150" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Item One</a>
+                    <a style="text-decoration: none" href="{{ url('product/productdetails/'.$product->slug ) }}"><span style="float:center">{{ $product->name }}</span></a>
                   </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                  {{ Form::open(['action' => 'CartController@store','enctype'=>'multipart/form-data']) }}
+                    {{ Form::selectRange('number_of_items', 1,$product->qauntity,['class'=>'form-control']) }}<br>
+                    {{ Form::hidden('product_id',$product->id ) }}
+                    {{ Form::hidden('product_price',$product->price ) }}
+                    {{ Form::hidden('product_name',$product->name) }}
+                  <button class="btn btn-sm btn-outline-primary mt-1" style="margin-left:-10px; display:inline-block"><i class="fa fa-cart-plus"></i>Add to Cart</button>
+                  {{ Form::close() }}
+                  {{ Form::open(['action' => 'WishListController@store','enctype'=>'multipart/form-data']) }}
+                  {{ Form::hidden('product_id',$product->id ) }}
+                  <button type="submit" class="btn btn-sm btn-outline-primary" style="margin-left:100px; margin-top:-60px; display:inline-block"><i class="fa fa-heart-o"></i>Add to wishlist</button>
+                  {{ Form::close() }}
+                  <hr style="margin-top:-10px; background:blue;">
+                  <h4><span class="badge badge-info">{{ 'Ugx'.' '.$product->price}}</span></h4>
                 </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Two</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Three</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
               </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Four</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Five</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Six</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
           <!-- /.row -->
 
-        </div>
-        <!-- /.col-lg-9 -->
+
 @endsection

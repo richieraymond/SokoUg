@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="col-md-12 col-md-offset-0">
-      <div class="card card-success">
-        <div class="card-title card-success">
+      <div class="card card-outline-success">
+        <div class="card-header">
           Create New Product
         </div>
         <div class="card-body">
@@ -55,13 +55,13 @@
           <div class="form-group">
             <div class="form-line">
               {{ Form::label('icon', 'Product Image') }}
-              {{ Form::file('icon', '', ['class' => 'form-control']) }}
+              {{ Form::file('icon',['class' => 'form-control']) }}
             </div>
           </div>
           <div class="form-group">
-          <div class="form-line">
+            <div class="form-line">
               {{ Form::submit('Submit', ['class' => 'btn btn-block btn-outline-primary waves-effect']) }}
-          </div>
+            </div>
           </div>
           {{ Form::close() }}
         </div>
@@ -69,4 +69,3 @@
     </div>
 	</div>
 @endsection
-
